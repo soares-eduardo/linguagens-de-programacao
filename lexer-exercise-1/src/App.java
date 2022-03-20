@@ -114,6 +114,7 @@ public class App {
             System.out.println(lexeme);
         }
     }
+}
 
 // Identificar se corresponde a algum token que não número ou variavel
 // Se corresponder, guardar (o problema é se for um EQ_OP ou um ASSIGN_OP)
