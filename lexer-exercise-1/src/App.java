@@ -115,47 +115,6 @@ public class App {
         }
     }
 
-    public static String findLexeme(int i) {
-        switch (input.charAt(i)) {
-            case '(':
-                return "LPAREN, 3";
-
-            case ')':
-                return "RPAREN, 4";
-
-            case '+':
-                return "ADD_OP, 5";
-
-            case '-':
-                return "SUB_OP, 6";
-
-            case '*':
-                return "MUL_OP, 7";
-
-            case '/':
-                return "DIV_OP, 8";
-
-            case '>':
-                return "GT_OP, 9";
-
-            case '<':
-                return "LT_OP, 10";
-
-            case '=':
-                if (input.charAt(i + 1) == '=') {
-                    return "EQ_OP, 11";
-                }
-
-            case ':':
-                if (input.charAt(i + 1) == '=') {
-                    return "ASSIGN_OP, 12";
-                }
-            default:
-                return null;
-        }
-    }
-}
-
 // Identificar se corresponde a algum token que não número ou variavel
 // Se corresponder, guardar (o problema é se for um EQ_OP ou um ASSIGN_OP)
 
