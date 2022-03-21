@@ -1,10 +1,17 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
 
-    static String input = "a := (aux - 2) * 200 / 19";
+    static String input;
 
     public static void main(String[] args) {
+
+        Scanner read = new Scanner(System.in);
+
+        System.out.println("Digite uma expressão: ");
+        input = read.nextLine();
+        System.out.println("\n");
 
         input = input.replaceAll("\\s+", "");
 
@@ -57,8 +64,8 @@ public class App {
                     break;
 
                 case '=':
-                    if (input.charAt(index + 1) == '=') {
-                        lexemes.add(input.charAt(index) + ", EQ_OP, 11");
+                    if (input.length() - 1 != index && input.charAt(index + 1) == '=') {
+                        lexemes.add(input.charAt(index) + "=, EQ_OP, 11");
                         index++;
                         break;
                     } else {
@@ -67,7 +74,7 @@ public class App {
                     }
 
                 case ':':
-                    if (input.charAt(index + 1) == '=') {
+                    if (input.length() -1 != index && input.charAt(index + 1) == '=') {
                         lexemes.add(input.charAt(index) + "=, ASSIGN_OP, 12");
                         index++;
                         break;
