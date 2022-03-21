@@ -97,7 +97,7 @@ public class App {
                         identLoop: for (int i = index; i < input.length(); i++) {
                             if (!Character.isAlphabetic(input.charAt(i)) || input.charAt(i) == '\n'
                                     || input.charAt(i) == '\t'
-                                    || input.charAt(i) == '\r' || input.charAt(i) == input.charAt(input.length() - 1)) {
+                                    || input.charAt(i) == '\r') {
                                 index = i;
                                 break identLoop;
                             } else if (input.charAt(i) == input.charAt(input.length() - 1)) {
