@@ -2,18 +2,13 @@ import java.util.ArrayList;
 
 public class App {
 
-    static String input = "a := (aux - 2) * 200 / 19 ";
+    static String input = "a := (aux - 2) * 200 / 19";
 
-    // "a:=(aux-2)*200/19"
-    // |
     public static void main(String[] args) {
 
-        // input = input.replaceAll("\\s+", "");
+        input = input.replaceAll("\\s+", "");
 
         ArrayList<String> lexemes = new ArrayList<>();
-
-        input = input.replaceAll("\\(", "\\( ");
-        input = input.replaceAll("\\)", " \\)");
 
         int index = 0;
 
@@ -86,10 +81,13 @@ public class App {
                         Integer.parseInt(String.valueOf(input.charAt(index)));
                         String numbers = "";
                         intLoop: for (int i = index; i < input.length(); i++) {
-                            if (input.charAt(i) == ' ' || input.charAt(i) == '\n' || input.charAt(i) == '\t'
+                            if (!Character.isDigit(input.charAt(i)) || input.charAt(i) == '\n'
+                                    || input.charAt(i) == '\t'
                                     || input.charAt(i) == '\r') {
-                                index = i + 1;
+                                index = i;
                                 break intLoop;
+                            } else if (input.charAt(i) == input.charAt(input.length() - 1)) {
+                                index = input.length();
                             }
                             numbers = numbers + input.charAt(i);
                         }
@@ -97,10 +95,13 @@ public class App {
                     } catch (Exception e) {
                         String idents = "";
                         identLoop: for (int i = index; i < input.length(); i++) {
-                            if (input.charAt(i) == ' ' || input.charAt(i) == '\n' || input.charAt(i) == '\t'
-                                    || input.charAt(i) == '\r') {
-                                index = i + 1;
+                            if (!Character.isAlphabetic(input.charAt(i)) || input.charAt(i) == '\n'
+                                    || input.charAt(i) == '\t'
+                                    || input.charAt(i) == '\r' || input.charAt(i) == input.charAt(input.length() - 1)) {
+                                index = i;
                                 break identLoop;
+                            } else if (input.charAt(i) == input.charAt(input.length() - 1)) {
+                                index = input.length();
                             }
                             idents = idents + input.charAt(i);
                         }
@@ -115,15 +116,3 @@ public class App {
         }
     }
 }
-
-// Identificar se corresponde a algum token que não número ou variavel
-// Se corresponder, guardar (o problema é se for um EQ_OP ou um ASSIGN_OP)
-
-// Se não corresponderb
-
-// Identificar se for número (é um INT_LIT, o problema é descobrir o tamanho)
-
-// Tentar converter até
-
-// Identificar se for um digito (é um IDENT, o problema é descobrir o nome
-// completo)
