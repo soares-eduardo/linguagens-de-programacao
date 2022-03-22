@@ -87,6 +87,7 @@ public class App {
                     try {
                         Integer.parseInt(String.valueOf(input.charAt(index)));
                         String numbers = "";
+                        int digits = 0;
                         intLoop: for (int i = index; i < input.length(); i++) {
                             if (!Character.isDigit(input.charAt(i)) || input.charAt(i) == '\n'
                                     || input.charAt(i) == '\t'
@@ -97,10 +98,16 @@ public class App {
                                 index = input.length();
                             }
                             numbers = numbers + input.charAt(i);
+                            digits++;
+                            if(digits>100) {
+                                System.out.println("Digitos muito grandes");
+                                System.exit(-1);
+                            }
                         }
                         lexemes.add(numbers + ", INT_LIT, 2");
                     } catch (Exception e) {
                         String idents = "";
+                        int digits = 0;
                         identLoop: for (int i = index; i < input.length(); i++) {
                             if (!Character.isAlphabetic(input.charAt(i)) || input.charAt(i) == '\n'
                                     || input.charAt(i) == '\t'
@@ -111,6 +118,11 @@ public class App {
                                 index = input.length();
                             }
                             idents = idents + input.charAt(i);
+                            digits++;
+                            if(digits>100) {
+                                System.out.println("Digitos muito grandes");
+                                System.exit(-1);
+                            }
                         }
                         lexemes.add(idents + ", IDENT, 1");
                     }

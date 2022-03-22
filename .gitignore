@@ -55,3 +55,5 @@ replay_pid*
 /lexer-exercise-1/Lexical-Analyzer
 
 .vscode
+
+*._DS_Store
